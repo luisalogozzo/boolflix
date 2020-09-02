@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!--/ script -->
+
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="dist/app.css">
+
+    <title>BOOLFLIX</title>
+  </head>
+  <body>
+    <div class="overlay">
+    </div>
+    <header>
+      <h1>BOOLFLIX</h1>
+      <div class="search">
+        <input type="text" id="insert-film-name" placeholder="">
+        <div>
+            <svg>
+                <use xlink:href="#path">
+            </svg>
+        </div>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 28" id="path">
+              <path d="M32.9418651,-20.6880772 C37.9418651,-20.6880772 40.9418651,-16.6880772 40.9418651,-12.6880772 C40.9418651,-8.68807717 37.9418651,-4.68807717 32.9418651,-4.68807717 C27.9418651,-4.68807717 24.9418651,-8.68807717 24.9418651,-12.6880772 C24.9418651,-16.6880772 27.9418651,-20.6880772 32.9418651,-20.6880772 L32.9418651,-29.870624 C32.9418651,-30.3676803 33.3448089,-30.770624 33.8418651,-30.770624 C34.08056,-30.770624 34.3094785,-30.6758029 34.4782612,-30.5070201 L141.371843,76.386562" transform="translate(83.156854, 22.171573) rotate(-225.000000) translate(-83.156854, -22.171573)"></path>
+          </symbol>
+      </svg>
+    </header>
+
+      <div id="searched_content">
+        <div class="container d-flex justify-content-center">
+          <div class="row heading-box">
+            <h2 class="text-center"></h2>
+          </div>
+        </div>
+
+      <div id="slider-animation" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#slider-animation" data-slide-to="0" class="active"></li>
+          <li data-target="#slider-animation" data-slide-to="1"></li>
+          <li data-target="#slider-animation" data-slide-to="2"></li>
+          <li data-target="#slider-animation" data-slide-to="3"></li>
+          <li data-target="#slider-animation" data-slide-to="4"></li>
+          <li data-target="#slider-animation" data-slide-to="5"></li>
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#slider-animation" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#slider-animation" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+
+        </div>
+      </div>
+      </div>
+
+      <section id="upcomingFilms">
+        <div class="listing_carousel container-upcoming">
+
+          <button type="button" class="btn btn-light prev"><i class="fa fa-angle-left"></i> </button>
+
+          <div class="listing_head">
+            <h2 class="listing_title">Prossimamente al cinema</h2>
+            <a href="#">Vedi tutti</a>
+          </div>
+          <ul class="carousel_items">
+          </ul>
+
+          <button type="button" class="btn btn-light next"><i class="fa fa-angle-right"></i> </button>
+
+      </section>
+
+      <div class="popup d-none container-fluid">
+        <div id="closePopupBtn">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="row details-row">
+          <div class="col-12 details-container">
+
+          </div>
+        </div>
+        <div class="row cast-row">
+          <div class="col-12">
+            <ul class="cast-list list-unstyled"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-film">
+        <h2 class="film">Film</h2>
+        <ul class="film-list list-unstyled">
+
+        </ul>
+      </div>
+
+      <div class="container-series">
+        <h2 class="serie">Serie tv</h2>
+        <ul class="film-list list-unstyled">
+        </ul>
+      </div>
+
+
+    <!-- slides template -->
+      <script id="slides-template" type="text/x-handlebars-template">
+        <div class="carousel-item text-center">
+          <img src="{{backdrop_path}}" alt="">
+          <div class="text-box">
+              <h2>{{title}}</h2>
+              <div class="vote-genre-wrap">
+                <span class="vote">{{{vote_average}}}</span>
+                <span class="genres" data-gen="{{genres}}"> </span>
+              </div>
+              <div class="overview-wrap">
+                <p>{{overview}}</p>
+                <a class="read-more" href="#">read more...</a>
+              </div>
+          </div>
+        </div>
+      </script>
+    <!-- /slides template -->
+
+      <!-- upcoming template -->
+      <script id="upcoming-template" type="text/x-handlebars-template">
+      <li class="item list-unstyled">
+        <div class="upcoming-film parentBtn" data-id="{{movieId}}">
+          <div class="img-wrap">
+            <img class="poster" src="{{poster_path}}" alt="">
+            <div class="img-overlay">
+            <button class="discover-btn" type="button" name="button">SCOPRI <i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+          <h3 class="title">{{title}}</h3>
+          <div class="vote"><span>{{{vote_average}}}</span></div>
+        </div>
+      </li>
+      </script>
+      <!-- /upcoming template -->
+
+      <!-- cast template -->
+      <script id="cast-template" type="text/x-handlebars-template">
+        <li class="actor">
+          <div class="actor-image"><img src="{{actorImg}}" alt=""></div>
+          <p class="actor-name">{{actorName}}</p>
+          <small class="actor-character">{{actorCharacter}}</small>
+        </li>
+      </script>
+      <!-- /cast template -->
+
+      <!-- details template -->
+      <script id="details-template" type="text/x-handlebars-template">
+        <div class="film-detail">
+          <div class="row no-gutters">
+            <div class="col-5">
+              <div class="main-details-wrap">
+                <div class="main-details">
+                  <h2>{{title}}</h2>
+                  <div class="other-details">
+                    <span>{{{vote_average}}}</span>
+                    <small>{{year}}</small>
+                    <small>{{runtime}}</small>
+                    <small><img class="flag" src="img/{{language}}.png" alt="{{language}}"></small>
+                  </div>
+                  <div class="overview-wrap">
+                    <p class="overview">{{overview}}</p>
+                    <!-- <p class="show-read-more"></p> -->
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-7">
+              <div class="popup-poster-wrap">
+                <div class="backdrop"></div>
+                <img src="{{backdrop_path}}" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-3">
+              <img class="small-poster-popup" src="{{poster}}" alt="">
+            </div>
+            <div class="col-9">
+              <div class="other-info">
+                <table>
+                  <tr>
+                    <th>Data di uscita </th>
+                    <td>{{release_date}}</td>
+                  </tr>
+                  <tr>
+                    <th>Genere </th>
+                    <td>{{genres}}</td>
+                  </tr>
+                  <tr>
+                    <th>Durata </th>
+                    <td>{{runtime}}</td>
+                  </tr>
+
+                  <tr class="budget">
+                    <th>Budget</th>
+                    <td>{{budget}}</td>
+                  </tr>
+                  <tr>
+                    <th>Incasso </th>
+                    <td>{{revenue}}</td>
+                  </tr>
+                  <tr>
+                    <th> </th>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </script>
+      <!-- /details template -->
+
+      <!-- films template -->
+      <script id="films-template" type="text/x-handlebars-template">
+        <li>
+        <div class="filmseries parentBtn" data-id="{{movieId}}">
+          <div class="img-wrap">
+            <img class="poster z-index-1" src="{{poster_path}}" alt="">
+            <div class="img-overlay">
+            <button class="discover-btn" type="button" name="button">SCOPRI <i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+          <div class="retrocard">
+            <h2 class="title">{{title}}{{name}}</h2>
+            <h3 class="original_title">{{original_title}}{{original_name}}</h3>
+            <div>Original language: <img class="flag" src="img/{{language}}.png" alt="{{language}}"></div>
+            <div class="vote">Vote Average: <span class="yellow">{{{vote_average}}}</span></div>
+            <div class="cast-wrap">Cast: <span class="cast"></span>  </div>
+            <br>
+            <div class="overview">{{overview}}</div>
+          </div>
+        </div>
+        </li>
+      </script>
+      <!-- /films template -->
+
+    <script src="src/js/app.js" charset="utf-8"></script>
+  </body>
+</html>
