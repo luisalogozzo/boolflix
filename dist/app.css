@@ -346,32 +346,47 @@ body {
   padding-left: 0;
 }
 
-.borders {
+.actor-borders {
   padding: 5px;
   border: 1px solid rgba(1, 1, 1, 0.2);
 }
 
-.container-film {
+.borders {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.container-film,
+.container-series {
   margin-top: 100px;
 }
 
-.container-film li {
+.container-film li,
+.container-series li {
   margin: 20px;
 }
 
-.container-film li .img-wrap {
+.container-film li .filmseries,
+.container-series li .filmseries {
+  border-radius: 7px;
+  transition: all 0.5s ease;
+}
+
+.container-film li .filmseries .img-wrap,
+.container-series li .filmseries .img-wrap {
   position: relative;
   width: 342px;
   height: 513px;
   overflow: hidden;
 }
 
-.container-film li .img-wrap img {
+.container-film li .filmseries .img-wrap img,
+.container-series li .filmseries .img-wrap img {
   width: 342px;
   height: 513px;
 }
 
-.container-film li .img-wrap .img-overlay {
+.container-film li .filmseries .img-wrap .img-overlay,
+.container-series li .filmseries .img-wrap .img-overlay {
   display: none;
   position: absolute;
   top: 0;
@@ -380,7 +395,8 @@ body {
   height: 100%;
 }
 
-.container-film li .img-wrap button {
+.container-film li .filmseries .img-wrap button,
+.container-series li .filmseries .img-wrap button {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -392,19 +408,24 @@ body {
   padding: 3px 3px;
 }
 
-.container-film li .img-wrap button i {
+.container-film li .filmseries .img-wrap button i,
+.container-series li .filmseries .img-wrap button i {
   font-size: 11px;
 }
 
-.container-film li .img-wrap:hover .img-overlay {
+.container-film li .filmseries .img-wrap:hover .img-overlay,
+.container-series li .filmseries .img-wrap:hover .img-overlay {
   display: block;
 }
 
-.container-film li .img-wrap:hover {
+.container-film li .filmseries:hover,
+.container-series li .filmseries:hover {
   border: 1px solid #ee0979;
+  transform: scale(1.05);
 }
 
-.container-film li:hover img {
+.container-film li .filmseries:hover img,
+.container-series li .filmseries:hover img {
   -webkit-filter: blur(5px);
           filter: blur(5px);
 }

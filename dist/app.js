@@ -425,12 +425,13 @@ function printPoster(type, path, imgSize) {
 }
 
 function opacity(index) {
-  $('.container-film li').eq(index).css('opacity', '0.5'); //console.log(  $('.container-film li').eq(index).css('opacity', '0.5'));
+  $('.container-film li').eq(index).css('opacity', '0.5');
+  $('.container-series li').eq(index).css('opacity', '0.5'); //console.log(  $('.container-film li').eq(index).css('opacity', '0.5'));
 }
 
 function printBorder(index) {
-  $('li.actor .actor-image').eq(index).addClass('borders');
-  $('li .filmseries').eq(index).css('border', '1px solid yellow');
+  $('li.actor .actor-image').eq(index).addClass('actor-borders');
+  $('li .filmseries').eq(index).addClass('borders');
 } // FUNZIONE STAMPA STELLE VOTO/////////////////////
 
 
