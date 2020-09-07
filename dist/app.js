@@ -180,6 +180,7 @@ function printMovieTv(InsertedFilm, url, container) {
       var ThisResults;
 
       for (var i = 0; i < risposta.results.length; i++) {
+        console.log(ThisResults);
         ThisResults = risposta.results[i];
         movieId = ThisResults.id;
         var context = {
@@ -307,15 +308,8 @@ function readMore(overview) {
   var myStr = overview;
 
   if (myStr.trim().length > maxLength) {
-    $('.read-more').show(); // var newStr = myStr.substring(0, maxLength);
-    // var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-    // $('.overview-wrap p.overview').empty().html(newStr);
-    // $('.overview-wrap p.overview').append('<span class="more-text">' + removedStr + '</span>');
-  } // $(".show-read-more").each(function(){
-  //     var myStr = $(this).text();
-  //
-  // });
-
+    $('.read-more').show();
+  }
 } //FUNZIONE CHE STAMPA I DETTAGLI DEL FILM
 
 
