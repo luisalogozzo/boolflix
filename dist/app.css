@@ -273,7 +273,6 @@ body {
   color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .popup .cast-row .col-12 .cast-list .actor {

@@ -99,7 +99,6 @@ function printMovieTv(InsertedFilm, url, container) {
       var imgSize = 'w342';
       var ThisResults;
       for (var i = 0; i < risposta.results.length; i++) {
-        console.log(ThisResults);
         ThisResults = risposta.results[i];
         movieId = ThisResults.id;
         var context = {
@@ -383,12 +382,14 @@ function SearchActors(movieId) {
     api_key: '25046906a5edc120a00e8cdb72843203',
     },
     success: function (data) {
+      console.log(movieId);
       var source = document.getElementById("cast-template").innerHTML;
       var template = Handlebars.compile(source);
 
       var Cast = data.cast;
       var Crew = data.crew;
       var Director = '';
+
       for (var i = 0; i < Crew.length; i++) {
         if (Crew[i].job == 'Director') {
           Director = Crew[i].name;
@@ -396,7 +397,8 @@ function SearchActors(movieId) {
       }
 
       var ThisResult;
-      for (var i = 0; i < Cast.length; i++) {
+      var crewLengthMax = Math.min(Crew.length, 15);
+      for (var i = 0; i < crewLengthMax; i++) {
         ThisResult = data.cast[i];
         //console.log(ThisResult);
         var context = {

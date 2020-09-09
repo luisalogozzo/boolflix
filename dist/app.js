@@ -180,7 +180,6 @@ function printMovieTv(InsertedFilm, url, container) {
       var ThisResults;
 
       for (var i = 0; i < risposta.results.length; i++) {
-        console.log(ThisResults);
         ThisResults = risposta.results[i];
         movieId = ThisResults.id;
         var context = {
@@ -455,6 +454,7 @@ function SearchActors(movieId) {
       api_key: '25046906a5edc120a00e8cdb72843203'
     },
     success: function success(data) {
+      console.log(movieId);
       var source = document.getElementById("cast-template").innerHTML;
       var template = Handlebars.compile(source);
       var Cast = data.cast;
@@ -468,8 +468,9 @@ function SearchActors(movieId) {
       }
 
       var ThisResult;
+      var crewLengthMax = Math.min(Crew.length, 15);
 
-      for (var i = 0; i < Cast.length; i++) {
+      for (var i = 0; i < crewLengthMax; i++) {
         ThisResult = data.cast[i]; //console.log(ThisResult);
 
         var context = {
