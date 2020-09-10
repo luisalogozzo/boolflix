@@ -4,17 +4,24 @@
     margin: 20px;
 
     .filmseries {
-      border-radius: 7px;
-
+      border-radius: 6px;
       transition: all .5s ease;
       .img-wrap {
         position: relative;
         width: 342px;
         height: 513px;
         overflow: hidden;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        &:hover {
+          border: 1px solid rgba(238,9,121,1);
+          transform: scale(1.05);
+        }
+
         img {
           width: 342px;
           height: 513px;
+
         }
         .img-overlay {
           display: none;
@@ -43,14 +50,11 @@
           display: block;
         }
       }
-      &:hover {
-        border: 1px solid rgba(238,9,121,1);
-        //border-radius: 7px;
-        transform: scale(1.05);
-
-      }
       &:hover img {
         filter: blur(5px);
+      }
+      h3 {
+        font-size: 14px;
       }
     }
   }

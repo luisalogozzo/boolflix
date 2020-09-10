@@ -108,18 +108,6 @@ body {
           .poster {
             height: 278px;
           }
-          .title {
-            font-size: 12px;
-            width: 100%;
-            overflow-y: scroll;
-            overflow: -moz-scrollbars-none;
-            scrollbar-width: none;
-            white-space: nowrap;
-            margin-top: 10px;
-            & ::-webkit-scrollbar {
-              display: none;
-            }
-          }
         }
       }
     }

@@ -114,8 +114,7 @@ function printMovieTv(InsertedFilm, url, container) {
          };
          var html = template(context);
          $(container).append(html);
-
-         if (ThisResults.poster_path === null) {
+         if (ThisResults.poster_path == null) {
            printBorder(i);
          }
       }
@@ -324,19 +323,6 @@ function printPoster(type, path, imgSize) {
     }
   }
 
-  // if (type == 'film' && path == null) {
-  //   urlPoster = "img/no-cover.png";
-  // } else {
-  //   urlPoster = urlImg + path;
-  // }
-  //
-  // if (type == 'actor' && path == null) {
-  //   urlPoster = "img/no-photo.png";
-  // } else {
-  //   urlPoster = urlImg + path;
-  // }
-
-
   return urlPoster;
 }
 
@@ -347,8 +333,10 @@ function opacity(index) {
 }
 
 function printBorder(index) {
+  $('li .filmseries img.poster').eq(index).addClass('borders');
+}
+function printBorderActors(index) {
   $('li.actor .actor-image').eq(index).addClass('actor-borders');
-  $('li .filmseries').eq(index).addClass('borders');
 }
 
 // FUNZIONE STAMPA STELLE VOTO/////////////////////
@@ -410,7 +398,7 @@ function SearchActors(movieId) {
         var html = template(context);
         $('.cast-list').append(html);
         if (ThisResult.profile_path == null) {
-          printBorder(i);
+          printBorderActors(i);
         }
       }
     },
